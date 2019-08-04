@@ -11,7 +11,7 @@ import Foundation
 typealias Input = Request
 
 typealias Request = (
-    url: URL,
+    urlString: String,
     queries: [URLQueryItem],
     headers: [String: String],
     methodAndPayload: HTTPMethodAndPayload
@@ -65,12 +65,13 @@ enum WebAPI {
     }
 
     private static func createURLRequest(by input: Input) -> URLRequest {
-        var request = URLRequest(url: input.url)
 
+        var urlComponents: URLComponents! = URLComponents(string: input.urlString)
+        urlComponents.queryItems = input.queries
+
+        var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = input.methodAndPayload.method
-
         request.httpBody = input.methodAndPayload.body
-
         request.allHTTPHeaderFields = input.headers
 
         return request
@@ -79,8 +80,8 @@ enum WebAPI {
     private static func createOutput(
         data: Data?,
         urlResponse: HTTPURLResponse?,
-        error: Error?) -> Output
-    {
+        error: Error?) -> Output {
+
         guard let data = data, let response = urlResponse else {
             return .noResponse(.noDataOrNoResponse(debugInfo: error.debugDescription))
         }

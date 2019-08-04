@@ -28,13 +28,13 @@ struct GitHubZen {
 
     static func fetch(_ block: @escaping (Either<Either<ConnectionError, TransformError>, GitHubZen>) -> Void) {
         let urlString = "https://api.github.com/zen"
-        guard let url = URL(string: urlString) else {
-            block(.left(.left(.malformedURL(debugInfo: urlString))))
-            return
-        }
+//        guard let url = URL(string: urlString) else {
+//            block(.left(.left(.malformedURL(debugInfo: urlString))))
+//            return
+//        }
 
         let input: Input = (
-            url,
+            urlString,
             queries: [],
             headers: [:],
             methodAndPayload: .get
@@ -89,13 +89,13 @@ struct GitHubUser: Codable {
         _ block: @escaping (Either<Either<ConnectionError, TransformError>, GitHubUser>) -> Void) {
 
         let urlString: String = "https://api.github.com/users"
-        guard let url = URL(string: urlString)?.appendingPathComponent(login) else {
-            block(.left(.left(.malformedURL(debugInfo: "\(urlString)/\(login)"))))
-            return
-        }
+//        guard let url = URL(string: urlString)?.appendingPathComponent(login) else {
+//            block(.left(.left(.malformedURL(debugInfo: "\(urlString)/\(login)"))))
+//            return
+//        }
 
         let input: Input = (
-            url,
+            urlString,
             queries: [],
             headers: [:],
             methodAndPayload: .get
