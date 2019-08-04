@@ -104,6 +104,7 @@ enum Output {
 
 enum ConnectionError {
     case noDataOrNoResponse(debugInfo: String)
+    case malformedURL(debugInfo: String)
 }
 
 typealias Response = (
