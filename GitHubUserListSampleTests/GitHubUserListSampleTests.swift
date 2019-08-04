@@ -10,25 +10,54 @@ import XCTest
 @testable import GitHubUserListSample
 
 class GitHubUserListSampleTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testRequest() {
+        let input: Request = (
+            url: URL(string: "https://api.github.com/zen")!,
+            queries: [],
+            headers: [:],
+            methodAndPayload: .get
+        )
+        WebAPI.call(with: input)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    func testResponse() {
+        let payloadString: String = "this is a response text"
+        let response: Response = (
+            statusCode: .ok,
+            headers: [:],
+            payload: payloadString.data(using: .utf8)!
+        )
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let errorOrZen = GitHubZen.from(response: response)
+        switch errorOrZen {
+        case .left(let error):
+            XCTFail("\(error)")
+        case .right(let zen):
+            XCTAssertEqual(zen.text, payloadString)
         }
     }
 
+    func testRequestAndResponse() {
+        let expectation = self.expectation(description: "wait for API response")
+
+        let input: Input = (
+            url: URL(string: "https://api.github.com/zen")!,
+            queries: [],
+            headers: [:],
+            methodAndPayload: .get
+        )
+
+
+        WebAPI.call(with: input) { output in
+            switch output {
+            case let .noResponse(connectionError):
+                XCTFail("\(connectionError)")
+            case let .hasResponse(response):
+                let errorOrZen = GitHubZen.from(response: response)
+                XCTAssertNotNil(errorOrZen.right)
+            }
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 10)
+    }
 }
