@@ -62,8 +62,7 @@ extension UserListPresenter: UITableViewDelegate {
 extension UserListPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsersTableViewCell", for: indexPath) as! UsersTableViewCell
-        let url = URL(string: self.input.users[indexPath.row].avatarUrl)
-        cell.userImageView.kf.setImage(with: url)
+        cell.initialize(by: self.input.users[indexPath.row])
         return cell
     }
 
