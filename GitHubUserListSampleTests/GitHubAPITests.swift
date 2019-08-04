@@ -50,4 +50,41 @@ class GitHubAPITests: XCTestCase {
 
         self.waitForExpectations(timeout: 10)
     }
+
+    func testUser() throws {
+        let response: Response = (
+            statusCode: .ok,
+            headers: [:],
+            payload: try JSONSerialization.data(withJSONObject: [
+                "id" : 1,
+                "login": "octocat"
+            ])
+        )
+
+        switch GitHubUser.from(response: response) {
+        case let .left(error):
+            XCTFail("\(error)")
+        case let .right(user):
+            XCTAssertEqual(user.id, 1)
+            XCTAssertEqual(user.login, "octocat")
+        }
+    }
+
+    func testUserFetch() {
+        let expectation = self.expectation(description: "API")
+
+        GitHubUser.fetch(by: "imaizume") { errorOrUser in
+            switch errorOrUser {
+            case let .left(error):
+                XCTFail("\(error)")
+            case let .right(user):
+                XCTAssertEqual(user.id, 16273903)
+                XCTAssertEqual(user.login, "imaizume")
+            }
+
+            expectation.fulfill()
+        }
+
+        self.waitForExpectations(timeout: 10)
+    }
 }
