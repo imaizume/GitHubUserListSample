@@ -99,9 +99,11 @@ class GitHubAPITests: XCTestCase {
                 let user1 = users[0]
                 XCTAssertEqual(user1.id, 16273903)
                 XCTAssertEqual(user1.login, "imaizume")
+                XCTAssertNotNil(user1.avatarUrl)
                 let user2 = users[1]
                 XCTAssertEqual(user2.id, 16273904)
                 XCTAssertEqual(user2.login, "rayqiri")
+                XCTAssertNotNil(user2.avatarUrl)
                 XCTAssertEqual(users.count, 30)
             }
 

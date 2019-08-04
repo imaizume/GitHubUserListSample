@@ -67,12 +67,14 @@ struct GitHubZen {
 struct GitHubUser: Codable {
     let id: Int
     let login: String
+    let avatarUrl: String
 
     static func from(response: Response) -> Either<TransformError, GitHubUser> {
         switch response.statusCode {
         case .ok:
             do {
                 let jsonDecoder: JSONDecoder = .init()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 let user = try jsonDecoder.decode(GitHubUser.self, from: response.payload)
                 return .right(user)
             } catch {
@@ -132,6 +134,7 @@ struct GitHubUsers {
         case .ok:
             do {
                 let jsonDecoder: JSONDecoder = .init()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 let users: [GitHubUser] = try jsonDecoder.decode([GitHubUser].self, from: response.payload)
                 return .right(users)
             } catch {

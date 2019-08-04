@@ -50,14 +50,17 @@ enum WebAPI {
     static func call(with input: Input, _ block: @escaping (Output) -> Void) {
         let urlRequest = self.createURLRequest(by: input)
 
+        print("[REQUEST] \nURL:\(urlRequest.url!.absoluteString)")
         let task = URLSession.shared.dataTask(with: urlRequest)
         { (data, urlResponse, error) in
-            let output = self.createOutput(
+            let output: Output = self.createOutput(
                 data: data,
                 urlResponse: urlResponse as? HTTPURLResponse,
                 error: error
             )
-
+            if let data = data {
+                print(String(data: data, encoding: .utf8)!)
+            }
             block(output)
         }
 
