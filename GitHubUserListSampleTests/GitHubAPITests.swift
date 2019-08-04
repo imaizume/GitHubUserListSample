@@ -73,13 +73,36 @@ class GitHubAPITests: XCTestCase {
     func testUserFetch() {
         let expectation = self.expectation(description: "API")
 
-        GitHubUser.fetch(by: "imaizume") { errorOrUser in
+        GitHubUser.fetch(byLogin: "imaizume") { errorOrUser in
             switch errorOrUser {
             case let .left(error):
                 XCTFail("\(error)")
             case let .right(user):
                 XCTAssertEqual(user.id, 16273903)
                 XCTAssertEqual(user.login, "imaizume")
+            }
+
+            expectation.fulfill()
+        }
+
+        self.waitForExpectations(timeout: 10)
+    }
+
+    func testUsersFetch() {
+        let expectation = self.expectation(description: "API")
+
+        GitHubUsers.fetch(since: 16273902) { errorOrUsers in
+            switch errorOrUsers {
+            case let .left(error):
+                XCTFail("\(error)")
+            case let .right(users):
+                let user1 = users[0]
+                XCTAssertEqual(user1.id, 16273903)
+                XCTAssertEqual(user1.login, "imaizume")
+                let user2 = users[1]
+                XCTAssertEqual(user2.id, 16273904)
+                XCTAssertEqual(user2.login, "rayqiri")
+                XCTAssertEqual(users.count, 30)
             }
 
             expectation.fulfill()

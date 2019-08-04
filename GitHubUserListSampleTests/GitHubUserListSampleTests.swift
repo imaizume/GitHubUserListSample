@@ -12,7 +12,7 @@ import XCTest
 class GitHubUserListSampleTests: XCTestCase {
     func testRequest() {
         let input: Request = (
-            url: URL(string: "https://api.github.com/zen")!,
+            urlString: "https://api.github.com/zen",
             queries: [],
             headers: [:],
             methodAndPayload: .get
@@ -41,7 +41,7 @@ class GitHubUserListSampleTests: XCTestCase {
         let expectation = self.expectation(description: "wait for API response")
 
         let input: Input = (
-            url: URL(string: "https://api.github.com/zen")!,
+            urlString: "https://api.github.com/zen",
             queries: [],
             headers: [:],
             methodAndPayload: .get

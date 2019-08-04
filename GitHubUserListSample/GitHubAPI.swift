@@ -64,7 +64,6 @@ struct GitHubZen {
     }
 }
 
-
 struct GitHubUser: Codable {
     let id: Int
     let login: String
@@ -85,10 +84,10 @@ struct GitHubUser: Codable {
     }
 
     static func fetch(
-        by login: String,
+        byLogin login: String,
         _ block: @escaping (Either<Either<ConnectionError, TransformError>, GitHubUser>) -> Void) {
 
-        let urlString: String = "https://api.github.com/users"
+        let urlString: String = "https://api.github.com/users/\(login)"
 //        guard let url = URL(string: urlString)?.appendingPathComponent(login) else {
 //            block(.left(.left(.malformedURL(debugInfo: "\(urlString)/\(login)"))))
 //            return
@@ -117,6 +116,60 @@ struct GitHubUser: Codable {
         }
     }
 
+
+    enum TransformError {
+        case unexpectedStatusCode(debugInfo: String)
+        case malformedData(debugInfo: String)
+    }
+}
+
+struct GitHubUsers {
+
+    let since: Int
+
+    static func from(response: Response) -> Either<TransformError, [GitHubUser]> {
+        switch response.statusCode {
+        case .ok:
+            do {
+                let jsonDecoder: JSONDecoder = .init()
+                let users: [GitHubUser] = try jsonDecoder.decode([GitHubUser].self, from: response.payload)
+                return .right(users)
+            } catch {
+                return .left(.malformedData(debugInfo: "\(error)"))
+            }
+        default:
+            return .left(.unexpectedStatusCode(debugInfo: "\(response.statusCode)"))
+        }
+    }
+
+    static func fetch(
+        since: Int,
+        _ block: @escaping (Either<Either<ConnectionError, TransformError>, [GitHubUser]>) -> Void) {
+
+        let urlString: String = "https://api.github.com/users"
+
+        let input: Input = (
+            urlString,
+            queries: [.init(name: "since", value: "\(since)")],
+            headers: [:],
+            methodAndPayload: .get
+        )
+
+        WebAPI.call(with: input) { output in
+            switch output {
+            case let .noResponse(connectionError):
+                block(.left(.left(connectionError)))
+            case let .hasResponse(response):
+                let errorOrUsers = GitHubUsers.from(response: response)
+                switch errorOrUsers {
+                case let .left(transformError):
+                    block(.left(.right(transformError)))
+                case let .right(users):
+                    block(.right(users))
+                }
+            }
+        }
+    }
 
     enum TransformError {
         case unexpectedStatusCode(debugInfo: String)
