@@ -5,6 +5,8 @@ target 'GitHubUserListSample' do
   use_frameworks!
 
   pod 'Kingfisher'
+  pod 'Instantiate'
+  pod 'InstantiateStandard'
   pod 'SwiftGen', '~> 6.0'
 
   target 'GitHubUserListSampleTests' do

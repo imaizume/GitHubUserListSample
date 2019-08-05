@@ -6,9 +6,17 @@
 //  Copyright © 2019 imaizume. All rights reserved.
 //
 
+import Instantiate
+import InstantiateStandard
 import UIKit
 
-class UserListViewController: UIViewController {
+class UserListViewController: UIViewController, StoryboardInstantiatable {
+
+    struct Dependency {
+    }
+
+    func inject(_ dependency: Dependency) {
+    }
 
     @IBOutlet weak var usersTableView: UITableView!
 
