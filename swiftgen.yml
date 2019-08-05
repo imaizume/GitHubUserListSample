@@ -1,0 +1,8 @@
+input_dir: GitHubUserListSample/
+output_dir: GitHubUserListSample/
+xcassets:
+  inputs: Assets.xcassets
+  outputs:
+    output: AssetsImages.swift
+    templateName: swift4
+
