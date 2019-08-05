@@ -57,7 +57,8 @@ class GitHubAPITests: XCTestCase {
             headers: [:],
             payload: try JSONSerialization.data(withJSONObject: [
                 "id" : 1,
-                "login": "octocat"
+                "login": "octocat",
+                "avatar_url": "https://pbs.twimg.com/profile_images/1157035760085684224/iuxTnT5g_400x400.jpg"
             ])
         )
 
