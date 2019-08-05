@@ -180,6 +180,121 @@ struct GitHubUsers {
     }
 }
 
+struct GitHubRepoOwner: Codable {
+    let avatarUrl: String
+    let login: String
+    let name: String
+    let followers: Int
+    let following: Int
+
+    static func from(response: Response) -> Either<TransformError, GitHubRepoOwner> {
+        switch response.statusCode {
+        case .ok:
+            do {
+                let jsonDecoder: JSONDecoder = .init()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                let user: GitHubRepoOwner = try jsonDecoder.decode(GitHubRepoOwner.self, from: response.payload)
+                return .right(user)
+            } catch {
+                return .left(.malformedData(debugInfo: "\(error)"))
+            }
+        default:
+            return .left(.unexpectedStatusCode(debugInfo: "\(response.statusCode)"))
+        }
+    }
+
+    static func fetch(
+        id: Int,
+        _ block: @escaping (Either<Either<ConnectionError, TransformError>, GitHubRepoOwner>) -> Void) {
+
+        let urlString: String = "https://api.github.com/user/\(id)"
+
+        let input: Input = (
+            urlString,
+            queries: [],
+            headers: ["Authorization": "token a08aac0c0e2eb8eaaf9e0e0ce6af9d24b2d24df0"],
+            methodAndPayload: .get
+        )
+
+        WebAPI.call(with: input) { output in
+            switch output {
+            case let .noResponse(connectionError):
+                block(.left(.left(connectionError)))
+            case let .hasResponse(response):
+                let errorOrUsers = GitHubRepoOwner.from(response: response)
+                switch errorOrUsers {
+                case let .left(transformError):
+                    block(.left(.right(transformError)))
+                case let .right(users):
+                    block(.right(users))
+                }
+            }
+        }
+    }
+
+    enum TransformError {
+        case unexpectedStatusCode(debugInfo: String)
+        case malformedData(debugInfo: String)
+    }
+}
+
+struct GitHubRepogitory: Codable {
+    let name: String
+    let language: String
+    let stargazers_count: Int
+    let description: String
+
+    static func from(response: Response) -> Either<TransformError, [GitHubRepogitory]> {
+        switch response.statusCode {
+        case .ok:
+            do {
+                let jsonDecoder: JSONDecoder = .init()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                let user: [GitHubRepogitory] = try jsonDecoder.decode([GitHubRepogitory].self, from: response.payload)
+                return .right(user)
+            } catch {
+                return .left(.malformedData(debugInfo: "\(error)"))
+            }
+        default:
+            return .left(.unexpectedStatusCode(debugInfo: "\(response.statusCode)"))
+        }
+    }
+
+    static func fetch(
+        byLogin login: String,
+        _ block: @escaping (Either<Either<ConnectionError, TransformError>, [GitHubRepogitory]>) -> Void) {
+
+        let urlString: String = "https://api.github.com/user/\(login)/repos"
+
+        let input: Input = (
+            urlString,
+            queries: [],
+            headers: ["Authorization": "token a08aac0c0e2eb8eaaf9e0e0ce6af9d24b2d24df0"],
+            methodAndPayload: .get
+        )
+
+        WebAPI.call(with: input) { output in
+            switch output {
+            case let .noResponse(connectionError):
+                block(.left(.left(connectionError)))
+            case let .hasResponse(response):
+                let errorOrUsers = GitHubRepogitory.from(response: response)
+                switch errorOrUsers {
+                case let .left(transformError):
+                    block(.left(.right(transformError)))
+                case let .right(users):
+                    block(.right(users))
+                }
+            }
+        }
+    }
+
+    enum TransformError {
+        case unexpectedStatusCode(debugInfo: String)
+        case malformedData(debugInfo: String)
+    }
+}
+
 enum Either<Left, Right> {
     case left(Left)
     case right(Right)
