@@ -36,7 +36,7 @@ struct GitHubZen {
         let input: Input = (
             urlString,
             queries: [],
-            headers: [:],
+            headers: ["Authorization": "token a08aac0c0e2eb8eaaf9e0e0ce6af9d24b2d24df0"],
             methodAndPayload: .get
         )
 
@@ -98,7 +98,7 @@ struct GitHubUser: Codable {
         let input: Input = (
             urlString,
             queries: [],
-            headers: [:],
+            headers: ["Authorization": "token a08aac0c0e2eb8eaaf9e0e0ce6af9d24b2d24df0"],
             methodAndPayload: .get
         )
 
@@ -154,7 +154,7 @@ struct GitHubUsers {
         let input: Input = (
             urlString,
             queries: [.init(name: "since", value: "\(since)")],
-            headers: [:],
+            headers: ["Authorization": "token a08aac0c0e2eb8eaaf9e0e0ce6af9d24b2d24df0"],
             methodAndPayload: .get
         )
 
