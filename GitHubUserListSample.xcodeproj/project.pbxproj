@@ -17,6 +17,7 @@
 		1787D0F922EFF64D00F2722C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1787D0F722EFF64D00F2722C /* LaunchScreen.storyboard */; };
 		1787D10422EFF64D00F2722C /* GitHubUserListSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1787D10322EFF64D00F2722C /* GitHubUserListSampleTests.swift */; };
 		1787D10F22EFF64D00F2722C /* GitHubUserListSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1787D10E22EFF64D00F2722C /* GitHubUserListSampleUITests.swift */; };
+		179D015922F85A820084B4C6 /* AssetsImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D015822F85A820084B4C6 /* AssetsImages.swift */; };
 		17DD435222F72896003FE974 /* GitHubAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435122F72896003FE974 /* GitHubAPITests.swift */; };
 		17DD435422F74566003FE974 /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DD435322F74566003FE974 /* UsersTableViewCell.xib */; };
 		17DD435622F745A0003FE974 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435522F745A0003FE974 /* UsersTableViewCell.swift */; };
@@ -60,6 +61,7 @@
 		1787D10A22EFF64D00F2722C /* GitHubUserListSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubUserListSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1787D10E22EFF64D00F2722C /* GitHubUserListSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserListSampleUITests.swift; sourceTree = "<group>"; };
 		1787D11022EFF64D00F2722C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		179D015822F85A820084B4C6 /* AssetsImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsImages.swift; sourceTree = "<group>"; };
 		17DD435122F72896003FE974 /* GitHubAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPITests.swift; sourceTree = "<group>"; };
 		17DD435322F74566003FE974 /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
 		17DD435522F745A0003FE974 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		1787D0ED22EFF64C00F2722C /* GitHubUserListSample */ = {
 			isa = PBXGroup;
 			children = (
+				179D015822F85A820084B4C6 /* AssetsImages.swift */,
 				1787D0EE22EFF64C00F2722C /* AppDelegate.swift */,
 				1787D0F022EFF64C00F2722C /* UserListViewController.swift */,
 				1787D0F222EFF64C00F2722C /* UserListViewController.storyboard */,
@@ -194,6 +197,7 @@
 			buildConfigurationList = 1787D11322EFF64D00F2722C /* Build configuration list for PBXNativeTarget "GitHubUserListSample" */;
 			buildPhases = (
 				D0349454A7CB1BF381CA4909 /* [CP] Check Pods Manifest.lock */,
+				179D015722F85A3D0084B4C6 /* Swiftgen */,
 				1787D0E722EFF64C00F2722C /* Sources */,
 				1787D0E822EFF64C00F2722C /* Frameworks */,
 				1787D0E922EFF64C00F2722C /* Resources */,
@@ -318,6 +322,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		179D015722F85A3D0084B4C6 /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftGen/bin/SwiftGen\" >/dev/null; then\n\"${PODS_ROOT}/SwiftGen/bin/SwiftGen\"\nelse\necho \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
 		44DAC5D9061A3524C10DD7D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1787D0F122EFF64C00F2722C /* UserListViewController.swift in Sources */,
+				179D015922F85A820084B4C6 /* AssetsImages.swift in Sources */,
 				17DD435822F7493A003FE974 /* UserListPresenter.swift in Sources */,
 				170543D422F0492300520C9D /* WebAPI.swift in Sources */,
 				1787D0EF22EFF64C00F2722C /* AppDelegate.swift in Sources */,

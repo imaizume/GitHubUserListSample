@@ -5,6 +5,7 @@ target 'GitHubUserListSample' do
   use_frameworks!
 
   pod 'Kingfisher'
+  pod 'SwiftGen', '~> 6.0'
 
   target 'GitHubUserListSampleTests' do
     inherit! :search_paths
