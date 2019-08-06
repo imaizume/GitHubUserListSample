@@ -1,5 +1,5 @@
 //
-//  UsersTableViewCell.swift
+//  UserListTableViewCell.swift
 //  GitHubUserListSample
 //
 //  Created by Tomohiro Imaizumi on 2019/08/05.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class UsersTableViewCell: UITableViewCell {
+class UserListTableViewCell: UITableViewCell {
+
+    static let identifier: String = .init(describing: UserListTableViewCell.self)
+
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var loginLabel: UILabel!
 

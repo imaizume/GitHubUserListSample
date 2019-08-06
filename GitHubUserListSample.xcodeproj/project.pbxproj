@@ -19,8 +19,8 @@
 		1787D10F22EFF64D00F2722C /* GitHubUserListSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1787D10E22EFF64D00F2722C /* GitHubUserListSampleUITests.swift */; };
 		179D015922F85A820084B4C6 /* AssetsImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D015822F85A820084B4C6 /* AssetsImages.swift */; };
 		17DD435222F72896003FE974 /* GitHubAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435122F72896003FE974 /* GitHubAPITests.swift */; };
-		17DD435422F74566003FE974 /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DD435322F74566003FE974 /* UsersTableViewCell.xib */; };
-		17DD435622F745A0003FE974 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435522F745A0003FE974 /* UsersTableViewCell.swift */; };
+		17DD435422F74566003FE974 /* UserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DD435322F74566003FE974 /* UserListTableViewCell.xib */; };
+		17DD435622F745A0003FE974 /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435522F745A0003FE974 /* UserListTableViewCell.swift */; };
 		17DD435822F7493A003FE974 /* UserListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435722F7493A003FE974 /* UserListPresenter.swift */; };
 		17DD435A22F74D74003FE974 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD435922F74D74003FE974 /* UserListModel.swift */; };
 		719D2AA29AD4F82F984A5C88 /* Pods_GitHubUserListSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5649D35A40687088A576F5DE /* Pods_GitHubUserListSampleTests.framework */; };
@@ -63,8 +63,8 @@
 		1787D11022EFF64D00F2722C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		179D015822F85A820084B4C6 /* AssetsImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsImages.swift; sourceTree = "<group>"; };
 		17DD435122F72896003FE974 /* GitHubAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPITests.swift; sourceTree = "<group>"; };
-		17DD435322F74566003FE974 /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
-		17DD435522F745A0003FE974 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		17DD435322F74566003FE974 /* UserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListTableViewCell.xib; sourceTree = "<group>"; };
+		17DD435522F745A0003FE974 /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
 		17DD435722F7493A003FE974 /* UserListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenter.swift; sourceTree = "<group>"; };
 		17DD435922F74D74003FE974 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
 		1C0E3F0C846872A08F87739A /* Pods_GitHubUserListSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubUserListSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,19 +140,14 @@
 		1787D0ED22EFF64C00F2722C /* GitHubUserListSample */ = {
 			isa = PBXGroup;
 			children = (
+				17DD435C22F9D880003FE974 /* Extension */,
+				17DD435B22F9D59E003FE974 /* API */,
 				179D015822F85A820084B4C6 /* AssetsImages.swift */,
 				1787D0EE22EFF64C00F2722C /* AppDelegate.swift */,
-				1787D0F022EFF64C00F2722C /* UserListViewController.swift */,
-				1787D0F222EFF64C00F2722C /* UserListViewController.storyboard */,
 				1787D0F522EFF64D00F2722C /* Assets.xcassets */,
 				1787D0F722EFF64D00F2722C /* LaunchScreen.storyboard */,
 				1787D0FA22EFF64D00F2722C /* Info.plist */,
-				170543D322F0492300520C9D /* WebAPI.swift */,
-				170543D522F16C4400520C9D /* GitHubAPI.swift */,
-				17DD435322F74566003FE974 /* UsersTableViewCell.xib */,
-				17DD435522F745A0003FE974 /* UsersTableViewCell.swift */,
-				17DD435722F7493A003FE974 /* UserListPresenter.swift */,
-				17DD435922F74D74003FE974 /* UserListModel.swift */,
+				17DD435D22F9E31F003FE974 /* UserList */,
 			);
 			path = GitHubUserListSample;
 			sourceTree = "<group>";
@@ -174,6 +169,35 @@
 				1787D11022EFF64D00F2722C /* Info.plist */,
 			);
 			path = GitHubUserListSampleUITests;
+			sourceTree = "<group>";
+		};
+		17DD435B22F9D59E003FE974 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				170543D322F0492300520C9D /* WebAPI.swift */,
+				170543D522F16C4400520C9D /* GitHubAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		17DD435C22F9D880003FE974 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		17DD435D22F9E31F003FE974 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				1787D0F022EFF64C00F2722C /* UserListViewController.swift */,
+				1787D0F222EFF64C00F2722C /* UserListViewController.storyboard */,
+				17DD435322F74566003FE974 /* UserListTableViewCell.xib */,
+				17DD435522F745A0003FE974 /* UserListTableViewCell.swift */,
+				17DD435722F7493A003FE974 /* UserListPresenter.swift */,
+				17DD435922F74D74003FE974 /* UserListModel.swift */,
+			);
+			path = UserList;
 			sourceTree = "<group>";
 		};
 		662627D68428568CABBC26C7 /* Pods */ = {
@@ -298,7 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17DD435422F74566003FE974 /* UsersTableViewCell.xib in Resources */,
+				17DD435422F74566003FE974 /* UserListTableViewCell.xib in Resources */,
 				1787D0F922EFF64D00F2722C /* LaunchScreen.storyboard in Resources */,
 				1787D0F622EFF64D00F2722C /* Assets.xcassets in Resources */,
 				1787D0F422EFF64C00F2722C /* UserListViewController.storyboard in Resources */,
@@ -437,7 +461,7 @@
 				1787D0EF22EFF64C00F2722C /* AppDelegate.swift in Sources */,
 				170543D622F16C4400520C9D /* GitHubAPI.swift in Sources */,
 				17DD435A22F74D74003FE974 /* UserListModel.swift in Sources */,
-				17DD435622F745A0003FE974 /* UsersTableViewCell.swift in Sources */,
+				17DD435622F745A0003FE974 /* UserListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

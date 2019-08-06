@@ -27,7 +27,7 @@ class UserListPresenter: NSObject {
         self.output = output
         self.input = input
         super.init()
-        self.output?.tableView.register(UINib(nibName: "UsersTableViewCell", bundle: nil), forCellReuseIdentifier: "UsersTableViewCell")
+        self.output?.tableView.register(UINib(nibName: UserListTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserListTableViewCell.identifier)
         self.output?.tableView.delegate = self
         self.output?.tableView.dataSource = self
         self.input.setOutput(self)
@@ -61,7 +61,7 @@ extension UserListPresenter: UITableViewDelegate {
 
 extension UserListPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UsersTableViewCell", for: indexPath) as! UsersTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: UserListTableViewCell.identifier, for: indexPath) as! UserListTableViewCell
         cell.initialize(by: self.input.users[indexPath.row])
         return cell
     }
