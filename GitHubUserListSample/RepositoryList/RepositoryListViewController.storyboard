@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eyr-ga-b8y">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Repository List View Controller-->
+        <scene sceneID="uTB-z5-KCP">
+            <objects>
+                <viewController id="eyr-ga-b8y" customClass="RepositoryListViewController" customModule="GitHubUserListSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R0x-ZK-3hE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" restorationIdentifier="User View" translatesAutoresizingMaskIntoConstraints="NO" id="FXQ-ks-PUs" userLabel="User View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="221"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="User View"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FXQ-ks-PUs" secondAttribute="height" multiplier="15:8" id="O4y-2h-Lp3"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" restorationIdentifier="Repository View" translatesAutoresizingMaskIntoConstraints="NO" id="5es-II-K3e" userLabel="Repository View">
+                                <rect key="frame" x="0.0" y="265" width="414" height="631"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Repository Collection View" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N35-1Y-by6" userLabel="Repository Collection View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="631"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3xo-Qe-Sqh">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Repository View"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="N35-1Y-by6" secondAttribute="bottom" id="GNP-GT-hSl"/>
+                                    <constraint firstAttribute="trailing" secondItem="N35-1Y-by6" secondAttribute="trailing" id="Pml-1b-rCB"/>
+                                    <constraint firstItem="N35-1Y-by6" firstAttribute="top" secondItem="5es-II-K3e" secondAttribute="top" id="UVF-W0-uPj"/>
+                                    <constraint firstItem="N35-1Y-by6" firstAttribute="leading" secondItem="5es-II-K3e" secondAttribute="leading" id="VHc-Q5-3WD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5es-II-K3e" firstAttribute="leading" secondItem="CXZ-JI-S7O" secondAttribute="leading" id="3jL-nd-oa4"/>
+                            <constraint firstItem="FXQ-ks-PUs" firstAttribute="top" secondItem="CXZ-JI-S7O" secondAttribute="top" id="GCf-F3-DKZ"/>
+                            <constraint firstItem="FXQ-ks-PUs" firstAttribute="leading" secondItem="CXZ-JI-S7O" secondAttribute="leading" id="Wgu-l2-M9a"/>
+                            <constraint firstItem="CXZ-JI-S7O" firstAttribute="trailing" secondItem="5es-II-K3e" secondAttribute="trailing" id="eZh-7D-hLe"/>
+                            <constraint firstItem="CXZ-JI-S7O" firstAttribute="trailing" secondItem="FXQ-ks-PUs" secondAttribute="trailing" id="iB0-iv-NDY"/>
+                            <constraint firstAttribute="bottom" secondItem="5es-II-K3e" secondAttribute="bottom" id="meY-VO-t0d"/>
+                            <constraint firstItem="5es-II-K3e" firstAttribute="top" secondItem="FXQ-ks-PUs" secondAttribute="bottom" id="t12-w8-ICe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CXZ-JI-S7O"/>
+                    </view>
+                    <connections>
+                        <outlet property="repositoryCollectionView" destination="N35-1Y-by6" id="hAj-CU-7gS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lgF-YR-Qsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="335" y="-304"/>
+        </scene>
+    </scenes>
+</document>

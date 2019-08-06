@@ -15,6 +15,8 @@ protocol UserListPresenterInput {
 
 protocol UserListPresenterOutput: class {
     var tableView: UITableView! { get }
+
+    func open(byId id: Int, andLogin login: String)
 }
 
 class UserListPresenter: NSObject {
@@ -51,7 +53,11 @@ extension UserListPresenter: UserListModelOutput {
 
 extension UserListPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) as? UserListTableViewCell else {
+            // TODO: assertion
+            return
+        }
+        self.output?.open(byId: cell.user.id, andLogin: cell.user.login)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

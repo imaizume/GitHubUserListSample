@@ -240,9 +240,9 @@ struct GitHubRepoOwner: Codable {
 
 struct GitHubRepogitory: Codable {
     let name: String
-    let language: String
-    let stargazers_count: Int
-    let description: String
+    let language: String?
+    let stargazersCount: Int
+    let description: String?
 
     static func from(response: Response) -> Either<TransformError, [GitHubRepogitory]> {
         switch response.statusCode {
@@ -264,7 +264,7 @@ struct GitHubRepogitory: Codable {
         byLogin login: String,
         _ block: @escaping (Either<Either<ConnectionError, TransformError>, [GitHubRepogitory]>) -> Void) {
 
-        let urlString: String = "https://api.github.com/user/\(login)/repos"
+        let urlString: String = "https://api.github.com/users/\(login)/repos"
 
         let input: Input = (
             urlString,

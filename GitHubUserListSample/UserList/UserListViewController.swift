@@ -10,17 +10,16 @@ import Instantiate
 import InstantiateStandard
 import UIKit
 
-class UserListViewController: UIViewController, StoryboardInstantiatable {
-
-    struct Dependency {
-    }
-
-    func inject(_ dependency: Dependency) {
-    }
+class UserListViewController: UIViewController {
 
     @IBOutlet weak var usersTableView: UITableView!
 
     private lazy var presenter: UserListPresenterInput = UserListPresenter(self, UserListModel())
+
+    override func loadView() {
+        super.loadView()
+        self.title = "Repository List"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,22 @@ class UserListViewController: UIViewController, StoryboardInstantiatable {
     }
 }
 
+extension UserListViewController: StoryboardInstantiatable {
+    struct Dependency {
+    }
+
+    func inject(_ dependency: Dependency) {
+    }
+}
+
 extension UserListViewController: UserListPresenterOutput {
+    func open(byId id: Int, andLogin login: String) {
+        let model: RepositoryListModel = .init()
+        let presenter: RepositoryListPresenter = .init(model, userInfo: (id: id, login: login))
+        let vc: RepositoryListViewController = .init(with: .init(input: presenter))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
     var tableView: UITableView! {
         return self.usersTableView
     }
