@@ -37,6 +37,7 @@ class RepositoryListPresenter: NSObject {
 extension RepositoryListPresenter: RepositoryListPresenterInput {
     func setOutput(_ output: RepositoryListPresenterOutput) {
         self.output = output
+        self.output?.collectionView.register(UINib(nibName: RepositoryCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: RepositoryCollectionViewCell.identifier)
         self.output?.collectionView.delegate = self
         self.output?.collectionView.dataSource = self
     }
@@ -48,7 +49,9 @@ extension RepositoryListPresenter: RepositoryListPresenterInput {
 
 extension RepositoryListPresenter: RepositoryListModelOutput {
     func didFetchRepos() {
-        self.output?.collectionView.reloadData()
+        DispatchQueue.main.async {
+             self.output?.collectionView.reloadData()
+        }
     }
 }
 
@@ -60,11 +63,20 @@ extension RepositoryListPresenter: UICollectionViewDataSource {
         guard let repo: GitHubRepogitory = self.input.repos[safe: indexPath.row] else {
             return UICollectionViewCell()
         }
-
-        return RepositoryCollectionViewCell(with: .init(repo: repo))
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RepositoryCollectionViewCell.identifier, for: indexPath) as! RepositoryCollectionViewCell
+        cell.repo = repo
+        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.input.repos.count
+    }
+}
+
+extension RepositoryListPresenter: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let h: CGFloat = 100
+        let w: CGFloat = collectionView.frame.size.width - 20
+        return CGSize(width: w, height: h)
     }
 }

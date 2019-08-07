@@ -14,9 +14,9 @@ class RepositoryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
 
-    static let identifier: String = .init(describing: UserListTableViewCell.self)
+    static let identifier: String = .init(describing: RepositoryCollectionViewCell.self)
 
-    private var repo: GitHubRepogitory? {
+    var repo: GitHubRepogitory? {
         didSet {
             self.nameLabel.text = self.repo?.name
         }
