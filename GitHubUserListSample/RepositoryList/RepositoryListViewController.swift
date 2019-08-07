@@ -31,6 +31,10 @@ class RepositoryListViewController: UIViewController {
 }
 
 extension RepositoryListViewController: RepositoryListPresenterOutput {
+    func open(_ viewController: UIViewController) {
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     var collectionView: UICollectionView! {
         return self.repositoryCollectionView
     }

@@ -16,6 +16,7 @@ protocol RepositoryListPresenterInput: class {
 
 protocol RepositoryListPresenterOutput: class {
     var collectionView: UICollectionView! { get }
+    func open(_ viewController: UIViewController)
 }
 
 class RepositoryListPresenter: NSObject {
@@ -56,6 +57,15 @@ extension RepositoryListPresenter: RepositoryListModelOutput {
 }
 
 extension RepositoryListPresenter: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let repo: GitHubRepogitory = self.input.repos[safe: indexPath.row],
+            let url = URL(string: repo.htmlUrl) else {
+            // TODO: assertion
+            return
+        }
+        let vc: WebViewController = .init(url)
+        self.output?.open(vc)
+    }
 }
 
 extension RepositoryListPresenter: UICollectionViewDataSource {

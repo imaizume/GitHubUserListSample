@@ -243,6 +243,7 @@ struct GitHubRepogitory: Codable {
     let language: String?
     let stargazersCount: Int
     let description: String?
+    let htmlUrl: String
 
     static func from(response: Response) -> Either<TransformError, [GitHubRepogitory]> {
         switch response.statusCode {
