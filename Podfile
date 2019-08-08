@@ -5,9 +5,10 @@ target 'GitHubUserListSample' do
   use_frameworks!
 
   pod "ExpandableLabel"
-  pod 'Kingfisher'
+  pod 'DZNEmptyDataSet'
   pod 'Instantiate'
   pod 'InstantiateStandard'
+  pod 'Kingfisher'
   pod 'SwiftGen', '~> 6.0'
   pod 'SwiftLint'
 
