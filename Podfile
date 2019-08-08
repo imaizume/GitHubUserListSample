@@ -4,6 +4,7 @@ target 'GitHubUserListSample' do
 
   use_frameworks!
 
+  pod "ExpandableLabel"
   pod 'Kingfisher'
   pod 'Instantiate'
   pod 'InstantiateStandard'

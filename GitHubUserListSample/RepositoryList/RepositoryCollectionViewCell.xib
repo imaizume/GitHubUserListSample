@@ -16,20 +16,80 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="Name Label" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2c-xd-gYH" userLabel="Name Label">
-                    <rect key="frame" x="186" y="39" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" identifier="Name Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" restorationIdentifier="Root View" translatesAutoresizingMaskIntoConstraints="NO" id="Lpa-ta-sd8" userLabel="Root View">
+                    <rect key="frame" x="8" y="8" width="398" height="84"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Name Label" text="SampleRepository" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2c-xd-gYH" userLabel="Name Label">
+                            <rect key="frame" x="0.0" y="0.0" width="173.33333333333334" height="24"/>
+                            <accessibility key="accessibilityConfiguration" identifier="Name Label"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="KKs-90-l9E"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Language Label" text="(Swift)" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvN-O6-RIX" userLabel="Language Label">
+                            <rect key="frame" x="250" y="4.6666666666666661" width="80" height="19.333333333333336"/>
+                            <accessibility key="accessibilityConfiguration" identifier="Language Label"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="kSj-eg-rd1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Stargazer Label" text="⭐100" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwd-TR-IbR" userLabel="Stargazer Label">
+                            <rect key="frame" x="338" y="4.6666666666666661" width="60" height="19.333333333333336"/>
+                            <accessibility key="accessibilityConfiguration" identifier="Stargazer Label"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="z4M-hJ-iiL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Description Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49Z-V3-BUE" userLabel="Description Label" customClass="ExpandableLabel" customModule="ExpandableLabel">
+                            <rect key="frame" x="0.0" y="24" width="398" height="60"/>
+                            <accessibility key="accessibilityConfiguration" identifier="Description Label"/>
+                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration" identifier="Root View"/>
+                    <constraints>
+                        <constraint firstItem="hvN-O6-RIX" firstAttribute="trailing" secondItem="rwd-TR-IbR" secondAttribute="leading" constant="-8" id="CF8-Yq-ndp"/>
+                        <constraint firstItem="rwd-TR-IbR" firstAttribute="bottom" secondItem="hvN-O6-RIX" secondAttribute="bottom" id="EMo-qT-aXB"/>
+                        <constraint firstItem="hvN-O6-RIX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="P2c-xd-gYH" secondAttribute="trailing" id="KVz-2D-D00"/>
+                        <constraint firstItem="hvN-O6-RIX" firstAttribute="bottom" secondItem="P2c-xd-gYH" secondAttribute="bottom" id="Rzd-7V-Ecj"/>
+                        <constraint firstItem="P2c-xd-gYH" firstAttribute="top" secondItem="CpU-mm-sd1" secondAttribute="top" id="Wxf-NM-Gku"/>
+                        <constraint firstItem="49Z-V3-BUE" firstAttribute="leading" secondItem="CpU-mm-sd1" secondAttribute="leading" id="dKz-Dg-qPT"/>
+                        <constraint firstItem="CpU-mm-sd1" firstAttribute="trailing" secondItem="rwd-TR-IbR" secondAttribute="trailing" id="jZX-3X-8dc"/>
+                        <constraint firstItem="49Z-V3-BUE" firstAttribute="top" secondItem="P2c-xd-gYH" secondAttribute="bottom" id="nfk-GP-Q6J"/>
+                        <constraint firstItem="P2c-xd-gYH" firstAttribute="leading" secondItem="CpU-mm-sd1" secondAttribute="leading" id="oIW-yF-hBg"/>
+                        <constraint firstItem="CpU-mm-sd1" firstAttribute="trailing" secondItem="49Z-V3-BUE" secondAttribute="trailing" id="v2V-Un-2Dp"/>
+                        <constraint firstItem="CpU-mm-sd1" firstAttribute="bottom" secondItem="49Z-V3-BUE" secondAttribute="bottom" id="yrd-cF-Svn"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="CpU-mm-sd1"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Lpa-ta-sd8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="0eE-ug-J9O"/>
+                <constraint firstItem="Lpa-ta-sd8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="fM1-yR-E0H"/>
+                <constraint firstAttribute="bottom" secondItem="Lpa-ta-sd8" secondAttribute="bottom" constant="8" id="kP6-qf-9SH"/>
+                <constraint firstItem="Lpa-ta-sd8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-8" id="n2D-Nj-BFt"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="descriptionLabel" destination="49Z-V3-BUE" id="6Zw-Ap-Swm"/>
+                <outlet property="languageLabel" destination="hvN-O6-RIX" id="T9d-37-4ax"/>
                 <outlet property="nameLabel" destination="P2c-xd-gYH" id="n3O-jS-1e1"/>
+                <outlet property="stargazerLabel" destination="rwd-TR-IbR" id="thC-8t-Mgc"/>
             </connections>
         </view>
     </objects>
