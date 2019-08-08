@@ -254,10 +254,11 @@
 			buildPhases = (
 				D0349454A7CB1BF381CA4909 /* [CP] Check Pods Manifest.lock */,
 				179D015722F85A3D0084B4C6 /* Swiftgen */,
+				17DD436E22FC854E003FE974 /* Swiftlint */,
 				1787D0E722EFF64C00F2722C /* Sources */,
 				1787D0E822EFF64C00F2722C /* Frameworks */,
-				1787D0E922EFF64C00F2722C /* Resources */,
 				44DAC5D9061A3524C10DD7D8 /* [CP] Embed Pods Frameworks */,
+				1787D0E922EFF64C00F2722C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -397,6 +398,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which \"${PODS_ROOT}/SwiftGen/bin/SwiftGen\" >/dev/null; then\n\"${PODS_ROOT}/SwiftGen/bin/SwiftGen\"\nelse\necho \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+		17DD436E22FC854E003FE974 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\necho \"warning: Swiftlint not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
 		};
 		44DAC5D9061A3524C10DD7D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

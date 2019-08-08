@@ -8,6 +8,7 @@ target 'GitHubUserListSample' do
   pod 'Instantiate'
   pod 'InstantiateStandard'
   pod 'SwiftGen', '~> 6.0'
+  pod 'SwiftLint'
 
   target 'GitHubUserListSampleTests' do
     inherit! :search_paths

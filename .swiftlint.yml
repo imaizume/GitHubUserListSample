@@ -1,0 +1,8 @@
+disabled_rules:
+  - force_cast
+  - identifier_name
+  - large_tuple
+  - line_length
+  - todo
+excluded:
+  - Pods
