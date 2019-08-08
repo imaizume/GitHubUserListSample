@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 protocol UserListPresenterInput {
     func fetchUsers()

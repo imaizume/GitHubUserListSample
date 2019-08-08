@@ -8,14 +8,17 @@
 
 import DZNEmptyDataSet
 import Foundation
+import Kingfisher
 import UIKit
 
 protocol RepositoryListPresenterInput: class {
     func setOutput(_ output: RepositoryListPresenterOutput)
+    func fetchRepoOwner()
     func fetchRepos()
 }
 
 protocol RepositoryListPresenterOutput: class {
+    var ownerViews: (avatarImageView: UIImageView, loginLabel: UILabel, nameLabel: UILabel, followLabel: UILabel) { get }
     var collectionView: UICollectionView! { get }
     func open(_ viewController: UIViewController)
 }
@@ -23,7 +26,12 @@ protocol RepositoryListPresenterOutput: class {
 class RepositoryListPresenter: NSObject {
 
     private let input: RepositoryListModelInput
-    private weak var output: RepositoryListPresenterOutput?
+    private weak var output: RepositoryListPresenterOutput? {
+        didSet {
+            self.output?.collectionView.emptyDataSetSource = self
+            self.output?.collectionView.emptyDataSetDelegate = self
+        }
+    }
     private let userInfo: (id: Int, login: String)
 
     required init(
@@ -44,12 +52,26 @@ extension RepositoryListPresenter: RepositoryListPresenterInput {
         self.output?.collectionView.dataSource = self
     }
 
+    func fetchRepoOwner() {
+        self.input.fetchRepoOwner(byId: self.userInfo.id)
+    }
+
     func fetchRepos() {
         self.input.fetchRepos(byLogin: self.userInfo.login)
     }
 }
 
 extension RepositoryListPresenter: RepositoryListModelOutput {
+    func didFetchRepoOwner() {
+        guard let owner = self.input.repoOwner else { return }
+        self.output?.ownerViews.avatarImageView.kf.setImage(with: URL(string: owner.avatarUrl))
+        self.output?.ownerViews.loginLabel.text = owner.login
+        self.output?.ownerViews.nameLabel.text = owner.name
+        let following: Int = owner.following
+        let followers: Int = owner.followers
+        self.output?.ownerViews.followLabel.text = "Following: \(following) / Followers: \(followers)"
+    }
+
     func didFetchRepos() {
         DispatchQueue.main.async {
              self.output?.collectionView.reloadData()
@@ -90,4 +112,13 @@ extension RepositoryListPresenter: UICollectionViewDelegateFlowLayout {
         let w: CGFloat = collectionView.frame.size.width - 20
         return CGSize(width: w, height: h)
     }
+}
+
+extension RepositoryListPresenter: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return Asset.user.image
+    }
+}
+
+extension RepositoryListPresenter: DZNEmptyDataSetDelegate {
 }

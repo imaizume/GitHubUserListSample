@@ -19,18 +19,85 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" restorationIdentifier="User View" translatesAutoresizingMaskIntoConstraints="NO" id="FXQ-ks-PUs" userLabel="User View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="221"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="103.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" restorationIdentifier="User Root View" translatesAutoresizingMaskIntoConstraints="NO" id="j6c-p4-y2G" userLabel="User Root View">
+                                        <rect key="frame" x="8" y="8" width="398" height="87.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Avatar Image View" translatesAutoresizingMaskIntoConstraints="NO" id="ZEC-cI-sjq" userLabel="Avatar Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Avatar Image View"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ZEC-cI-sjq" secondAttribute="height" multiplier="1:1" id="73s-8R-Rh2"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" restorationIdentifier="User Content View" translatesAutoresizingMaskIntoConstraints="NO" id="e4J-f0-fJU" userLabel="User Content View">
+                                                <rect key="frame" x="95.5" y="0.0" width="302.5" height="87.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-g6-MUR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302.5" height="87.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-tz-7YC" userLabel="Login Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="29"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Name Label" text="(Real Name)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CHr-gL-SL5" userLabel="Name Label">
+                                                                <rect key="frame" x="0.0" y="29" width="107.5" height="29.5"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="Name Label"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Follow Label" text="Following; 100 / Followed: 100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8b3-tf-BU4" userLabel="Follow Label">
+                                                                <rect key="frame" x="0.0" y="58.5" width="217" height="29"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="Follow Label"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="User Content View"/>
+                                                <constraints>
+                                                    <constraint firstItem="ZgS-g6-MUR" firstAttribute="leading" secondItem="e4J-f0-fJU" secondAttribute="leading" id="8DA-gv-7WJ"/>
+                                                    <constraint firstItem="ZgS-g6-MUR" firstAttribute="top" secondItem="e4J-f0-fJU" secondAttribute="top" id="L0J-24-DQZ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZgS-g6-MUR" secondAttribute="bottom" id="OKw-00-vVK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZgS-g6-MUR" secondAttribute="trailing" id="k7u-Jk-22x"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="User Root View"/>
+                                        <constraints>
+                                            <constraint firstItem="ZEC-cI-sjq" firstAttribute="leading" secondItem="j6c-p4-y2G" secondAttribute="leading" id="Uoj-aI-dcC"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZEC-cI-sjq" secondAttribute="bottom" id="ZLi-My-X04"/>
+                                            <constraint firstItem="ZEC-cI-sjq" firstAttribute="top" secondItem="j6c-p4-y2G" secondAttribute="top" id="acp-Qe-Hhu"/>
+                                            <constraint firstAttribute="bottom" secondItem="e4J-f0-fJU" secondAttribute="bottom" id="djb-gc-7oF"/>
+                                            <constraint firstItem="e4J-f0-fJU" firstAttribute="top" secondItem="j6c-p4-y2G" secondAttribute="top" id="eUa-1P-XXb"/>
+                                            <constraint firstAttribute="trailing" secondItem="e4J-f0-fJU" secondAttribute="trailing" id="hIe-TL-LBg"/>
+                                            <constraint firstItem="e4J-f0-fJU" firstAttribute="leading" secondItem="ZEC-cI-sjq" secondAttribute="trailing" constant="8" id="naI-oz-9OJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="User View"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FXQ-ks-PUs" secondAttribute="height" multiplier="15:8" id="O4y-2h-Lp3"/>
+                                    <constraint firstItem="j6c-p4-y2G" firstAttribute="top" secondItem="FXQ-ks-PUs" secondAttribute="top" constant="8" id="1zM-AW-Ena"/>
+                                    <constraint firstAttribute="width" secondItem="FXQ-ks-PUs" secondAttribute="height" multiplier="4:1" id="O4y-2h-Lp3"/>
+                                    <constraint firstItem="j6c-p4-y2G" firstAttribute="leading" secondItem="FXQ-ks-PUs" secondAttribute="leading" constant="8" id="b3i-YT-qyn"/>
+                                    <constraint firstAttribute="bottom" secondItem="j6c-p4-y2G" secondAttribute="bottom" constant="8" id="dud-xO-2vj"/>
+                                    <constraint firstAttribute="trailing" secondItem="j6c-p4-y2G" secondAttribute="trailing" constant="8" id="miC-Zi-5mN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" restorationIdentifier="Repository View" translatesAutoresizingMaskIntoConstraints="NO" id="5es-II-K3e" userLabel="Repository View">
-                                <rect key="frame" x="0.0" y="265" width="414" height="631"/>
+                                <rect key="frame" x="0.0" y="147.5" width="414" height="748.5"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Repository Collection View" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N35-1Y-by6" userLabel="Repository Collection View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="631"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="748.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3xo-Qe-Sqh">
                                             <size key="itemSize" width="50" height="50"/>
@@ -64,6 +131,10 @@
                         <viewLayoutGuide key="safeArea" id="CXZ-JI-S7O"/>
                     </view>
                     <connections>
+                        <outlet property="avatarImageView" destination="ZEC-cI-sjq" id="IYX-Ik-CwM"/>
+                        <outlet property="followLabel" destination="8b3-tf-BU4" id="eLj-Zv-RBg"/>
+                        <outlet property="loginLabel" destination="p1V-tz-7YC" id="d8L-47-Fch"/>
+                        <outlet property="nameLabel" destination="CHr-gL-SL5" id="4Kc-XS-kgH"/>
                         <outlet property="repositoryCollectionView" destination="N35-1Y-by6" id="hAj-CU-7gS"/>
                     </connections>
                 </viewController>

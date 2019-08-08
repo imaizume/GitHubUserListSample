@@ -9,6 +9,10 @@
 import Foundation
 
 protocol RepositoryListModelInput: class {
+    func fetchRepoOwner(byId id: Int)
+
+    var repoOwner: GitHubRepoOwner? { get }
+
     func fetchRepos(byLogin login: String)
 
     var repos: [GitHubRepogitory] { get }
@@ -17,12 +21,19 @@ protocol RepositoryListModelInput: class {
 }
 
 protocol RepositoryListModelOutput: class {
+    func didFetchRepoOwner()
     func didFetchRepos()
 }
 
 class RepositoryListModel: NSObject {
 
     private(set) weak var output: RepositoryListModelOutput? = nil
+
+    private(set) var repoOwner: GitHubRepoOwner? {
+        didSet {
+            self.output?.didFetchRepoOwner()
+        }
+    }
 
     private(set) var repos: [GitHubRepogitory] = [] {
         didSet {
@@ -36,6 +47,18 @@ class RepositoryListModel: NSObject {
 }
 
 extension RepositoryListModel: RepositoryListModelInput {
+    func fetchRepoOwner(byId id: Int) {
+        GitHubRepoOwner.fetch(id: id) { errorOrOwner in
+            switch errorOrOwner {
+            case let .left(error):
+                print(error)
+                // TODO: assert error
+            case let .right(owner):
+                self.repoOwner = owner
+            }
+        }
+    }
+
     func fetchRepos(byLogin login: String) {
         GitHubRepogitory.fetch(byLogin: login) { errorOrRepos in
             switch errorOrRepos {
