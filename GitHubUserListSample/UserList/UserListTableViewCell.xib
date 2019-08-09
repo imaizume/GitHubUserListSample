@@ -27,8 +27,8 @@
                     <view contentMode="scaleToFill" restorationIdentifier="Right Content View" translatesAutoresizingMaskIntoConstraints="NO" id="rYG-RD-oJe" userLabel="Right Content View">
                         <rect key="frame" x="106" y="0.0" width="308" height="99.666666666666671"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Login Title Label" text="ユーザー名: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojP-oH-bht" userLabel="Login Title Label">
-                                <rect key="frame" x="16" y="16" width="112" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Login Title Label" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojP-oH-bht" userLabel="Login Title Label">
+                                <rect key="frame" x="16" y="16" width="112" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="112" id="5k2-K5-Fem"/>
                                 </constraints>
