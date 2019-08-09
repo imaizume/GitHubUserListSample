@@ -8,59 +8,26 @@
 
 import Foundation
 
-typealias Input = Request
-
-typealias Request = (
-    urlString: String,
-    queries: [URLQueryItem],
-    headers: [String: String],
-    methodAndPayload: HTTPMethodAndPayload
-)
-
-enum HTTPMethodAndPayload {
-    case get
-    case post
-
-    var method: String {
-        switch self {
-        case .get:
-            return "GET"
-        case .post:
-            return "POST"
-        }
-    }
-
-    var body: Data? {
-        switch self {
-        case .get:
-            return nil
-        case .post:
-            return nil
-        }
-    }
-}
-
 enum WebAPI {
-    static func call(with input: Input) {
-        self.call(with: input) { _ in
-            // nothing to do in this callback
-        }
-    }
-
     static func call(with input: Input, _ block: @escaping (Output) -> Void) {
         let urlRequest = self.createURLRequest(by: input)
 
-        print("[REQUEST] \nURL:\(urlRequest.url!.absoluteString)")
-        let task = URLSession.shared.dataTask(with: urlRequest)
-        { (data, urlResponse, error) in
+        print("[REQUEST] URL:\(urlRequest.url!.absoluteString)")
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, urlResponse, error) in
             let output: Output = self.createOutput(
                 data: data,
                 urlResponse: urlResponse as? HTTPURLResponse,
                 error: error
             )
-            if let data = data {
-                print(String(data: data, encoding: .utf8)!)
+
+            if let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),
+                let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
+                print(String(decoding: jsonData, as: UTF8.self))
+            } else {
+                print("json data malformed")
             }
+
             block(output)
         }
 
@@ -98,38 +65,5 @@ enum WebAPI {
             headers: headers,
             payload: data
         ))
-    }
-}
-
-enum Output {
-    case hasResponse(Response)
-    case noResponse(ConnectionError)
-}
-
-enum ConnectionError {
-    case noDataOrNoResponse(debugInfo: String)
-    case malformedURL(debugInfo: String)
-}
-
-typealias Response = (
-    statusCode: HTTPStatus,
-    headers: [String: String],
-    payload: Data
-)
-
-enum HTTPStatus {
-    case ok
-    case notFound
-    case unsupported(code: Int)
-
-    static func from(code: Int) -> HTTPStatus {
-        switch code {
-        case 200:
-            return .ok
-        case 404:
-            return notFound
-        default:
-            return .unsupported(code: code)
-        }
     }
 }

@@ -10,17 +10,31 @@ import Instantiate
 import InstantiateStandard
 import UIKit
 
+/**
+ ユーザー一覧からセルタップ後に遷移するリポジトリのリスト
+ */
 class RepositoryListViewController: UIViewController {
 
-    private var id: Int = 0
+    // MARK: - Properties
 
-    private lazy var presenter: RepositoryListPresenterInput = RepositoryListPresenter(RepositoryListModel(), userInfo: (0, ""))
-    
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var followLabel: UILabel!
-    @IBOutlet weak var repositoryCollectionView: UICollectionView!
+    // MARK: IBOutlet
+
+    @IBOutlet private weak var avatarImageView: UIImageView!
+    @IBOutlet private weak var loginLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var followLabel: UILabel!
+    @IBOutlet private weak var repositoryCollectionView: UICollectionView!
+    @IBOutlet internal weak var activityIndicatorView: UIActivityIndicatorView!
+
+    // MARK: private
+
+    private var userInfo: (id: Int, login: String)!
+
+    private var presenter: RepositoryListPresenter!
+
+    // MARK: - Methods
+
+    // MARK: lifecycle
 
     override func loadView() {
         super.loadView()
@@ -29,9 +43,19 @@ class RepositoryListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.setOutput(self)
+        self.presenter = .init(self, userInfo: self.userInfo)
         self.presenter.fetchRepoOwner()
         self.presenter.fetchRepos()
+    }
+}
+
+extension RepositoryListViewController: StoryboardInstantiatable {
+    struct Dependency {
+        let userInfo: (id: Int, login: String)
+    }
+
+    func inject(_ dependency: Dependency) {
+        self.userInfo = dependency.userInfo
     }
 }
 
@@ -43,18 +67,8 @@ extension RepositoryListViewController: RepositoryListPresenterOutput {
     func open(_ viewController: UIViewController) {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     var collectionView: UICollectionView! {
         return self.repositoryCollectionView
-    }
-}
-
-extension RepositoryListViewController: StoryboardInstantiatable {
-    struct Dependency {
-        let input: RepositoryListPresenterInput
-    }
-
-    func inject(_ dependency: Dependency) {
-        self.presenter = dependency.input
     }
 }

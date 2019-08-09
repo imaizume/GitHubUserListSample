@@ -37,21 +37,21 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-g6-MUR">
                                                         <rect key="frame" x="0.0" y="0.0" width="302.5" height="87.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-tz-7YC" userLabel="Login Label">
-                                                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="29"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-tz-7YC" userLabel="Login Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="18.5" height="29"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Name Label" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CHr-gL-SL5" userLabel="Name Label">
-                                                                <rect key="frame" x="0.0" y="29" width="107.5" height="29.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Name Label" text="(--)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CHr-gL-SL5" userLabel="Name Label">
+                                                                <rect key="frame" x="0.0" y="29" width="31.5" height="29.5"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="Name Label"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Follow Label" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8b3-tf-BU4" userLabel="Follow Label">
-                                                                <rect key="frame" x="0.0" y="58.5" width="217" height="29"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Follow Label" text="Following: -- / Followers: --" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8b3-tf-BU4" userLabel="Follow Label">
+                                                                <rect key="frame" x="0.0" y="58.5" width="197" height="29"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="Follow Label"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
@@ -96,7 +96,7 @@
                             <view contentMode="scaleToFill" restorationIdentifier="Repository View" translatesAutoresizingMaskIntoConstraints="NO" id="5es-II-K3e" userLabel="Repository View">
                                 <rect key="frame" x="0.0" y="147.5" width="414" height="748.5"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Repository Collection View" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N35-1Y-by6" userLabel="Repository Collection View">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Repository Collection View" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N35-1Y-by6" userLabel="Repository Collection View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="748.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3xo-Qe-Sqh">
@@ -107,14 +107,23 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="Activity Indicator View" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pZh-Dh-mjA" userLabel="Activity Indicator View">
+                                        <rect key="frame" x="197" y="364.5" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="5N3-Ap-lhy"/>
+                                            <constraint firstAttribute="width" constant="20" id="aph-1q-l9Y"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Repository View"/>
                                 <constraints>
+                                    <constraint firstItem="pZh-Dh-mjA" firstAttribute="centerY" secondItem="5es-II-K3e" secondAttribute="centerY" id="Aya-vi-7kN"/>
                                     <constraint firstAttribute="bottom" secondItem="N35-1Y-by6" secondAttribute="bottom" id="GNP-GT-hSl"/>
                                     <constraint firstAttribute="trailing" secondItem="N35-1Y-by6" secondAttribute="trailing" id="Pml-1b-rCB"/>
                                     <constraint firstItem="N35-1Y-by6" firstAttribute="top" secondItem="5es-II-K3e" secondAttribute="top" id="UVF-W0-uPj"/>
                                     <constraint firstItem="N35-1Y-by6" firstAttribute="leading" secondItem="5es-II-K3e" secondAttribute="leading" id="VHc-Q5-3WD"/>
+                                    <constraint firstItem="pZh-Dh-mjA" firstAttribute="centerX" secondItem="5es-II-K3e" secondAttribute="centerX" id="uRw-SP-EJt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -131,6 +140,7 @@
                         <viewLayoutGuide key="safeArea" id="CXZ-JI-S7O"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="pZh-Dh-mjA" id="fe8-Ma-c8k"/>
                         <outlet property="avatarImageView" destination="ZEC-cI-sjq" id="IYX-Ik-CwM"/>
                         <outlet property="followLabel" destination="8b3-tf-BU4" id="eLj-Zv-RBg"/>
                         <outlet property="loginLabel" destination="p1V-tz-7YC" id="d8L-47-Fch"/>

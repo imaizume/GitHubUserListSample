@@ -8,18 +8,6 @@
 
 import Foundation
 
-protocol RepositoryListModelInput: class {
-    func fetchRepoOwner(byId id: Int)
-
-    var repoOwner: GitHubRepoOwner? { get }
-
-    func fetchRepos(byLogin login: String)
-
-    var repos: [GitHubRepogitory] { get }
-
-    func setOutput(_ output: RepositoryListModelOutput)
-}
-
 protocol RepositoryListModelOutput: class {
     func didFetchRepoOwner()
     func didFetchRepos()
@@ -27,28 +15,29 @@ protocol RepositoryListModelOutput: class {
 
 class RepositoryListModel: NSObject {
 
-    private(set) weak var output: RepositoryListModelOutput? = nil
+    private(set) weak var output: RepositoryListModelOutput?
 
-    private(set) var repoOwner: GitHubRepoOwner? {
+    private(set) var repoOwner: GitHubUser? {
         didSet {
             self.output?.didFetchRepoOwner()
         }
     }
 
-    private(set) var repos: [GitHubRepogitory] = [] {
+    private(set) var repos: [GitHubRepo] = [] {
         didSet {
              self.output?.didFetchRepos()
         }
     }
 
-    func setOutput(_ output: RepositoryListModelOutput) {
+    /// APIコール中であれば `true` になる
+    private(set) var isLoading: Bool = false
+
+    required init(_ output: RepositoryListModelOutput) {
         self.output = output
     }
-}
 
-extension RepositoryListModel: RepositoryListModelInput {
     func fetchRepoOwner(byId id: Int) {
-        GitHubRepoOwner.fetch(id: id) { errorOrOwner in
+        GitHubUser.fetch(byId: id) { errorOrOwner in
             switch errorOrOwner {
             case let .left(error):
                 print(error)
@@ -60,15 +49,25 @@ extension RepositoryListModel: RepositoryListModelInput {
     }
 
     func fetchRepos(byLogin login: String) {
-        GitHubRepogitory.fetch(byLogin: login) { errorOrRepos in
+        guard !self.isLoading else { return }
+        self.startLoading()
+        GitHubRepo.fetch(byLogin: login) { errorOrRepos in
             switch errorOrRepos {
             case let .left(error):
                 print(error)
                 // TODO: assert error
-                break
             case let .right(repos):
                 self.repos.append(contentsOf: repos)
             }
+            self.finishLoading()
         }
     }
+
+    // MARK: private
+
+    /// APIコール状態をONにする
+    private func startLoading() { self.isLoading = true }
+
+    /// APIコール状態をOFFにする
+    private func finishLoading() { self.isLoading = false }
 }

@@ -25,31 +25,21 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" restorationIdentifier="Right Content View" translatesAutoresizingMaskIntoConstraints="NO" id="rYG-RD-oJe" userLabel="Right Content View">
-                        <rect key="frame" x="106" y="0.0" width="308" height="99.666666666666671"/>
+                        <rect key="frame" x="107.66666666666666" y="0.0" width="306.33333333333337" height="99.666666666666671"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Login Title Label" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojP-oH-bht" userLabel="Login Title Label">
-                                <rect key="frame" x="16" y="16" width="112" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="5k2-K5-Fem"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1E-BD-kR7" userLabel="Login Label">
-                                <rect key="frame" x="132" y="16" width="160" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaaaaa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1E-BD-kR7" userLabel="Login Label">
+                                <rect key="frame" x="99.333333333333314" y="30.666666666666668" width="107.66666666666669" height="38.333333333333329"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="p1E-BD-kR7" secondAttribute="trailing" constant="16" id="J4y-Dl-LWz"/>
-                            <constraint firstItem="p1E-BD-kR7" firstAttribute="top" secondItem="rYG-RD-oJe" secondAttribute="top" constant="16" id="M8l-BL-x0O"/>
-                            <constraint firstItem="ojP-oH-bht" firstAttribute="leading" secondItem="rYG-RD-oJe" secondAttribute="leading" constant="16" id="VOB-W3-7DF"/>
-                            <constraint firstItem="ojP-oH-bht" firstAttribute="top" secondItem="rYG-RD-oJe" secondAttribute="top" constant="16" id="btR-SE-1ot"/>
-                            <constraint firstItem="p1E-BD-kR7" firstAttribute="leading" secondItem="ojP-oH-bht" secondAttribute="trailing" constant="4" id="ec6-tD-DrJ"/>
+                            <constraint firstItem="p1E-BD-kR7" firstAttribute="centerX" secondItem="rYG-RD-oJe" secondAttribute="centerX" id="18y-h7-YNJ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p1E-BD-kR7" secondAttribute="trailing" constant="16" id="J4y-Dl-LWz"/>
+                            <constraint firstItem="p1E-BD-kR7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rYG-RD-oJe" secondAttribute="leading" constant="16" id="lYb-ue-GLj"/>
+                            <constraint firstItem="p1E-BD-kR7" firstAttribute="centerY" secondItem="rYG-RD-oJe" secondAttribute="centerY" id="yF6-4q-2lS"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -60,7 +50,7 @@
                     <constraint firstItem="bfz-S0-abp" firstAttribute="leading" secondItem="O1E-gS-6kh" secondAttribute="leading" id="Xyy-bR-S7i"/>
                     <constraint firstItem="rYG-RD-oJe" firstAttribute="top" secondItem="O1E-gS-6kh" secondAttribute="top" id="Z89-ig-3jr"/>
                     <constraint firstItem="bfz-S0-abp" firstAttribute="top" secondItem="O1E-gS-6kh" secondAttribute="top" id="iMH-zk-Hlq"/>
-                    <constraint firstItem="rYG-RD-oJe" firstAttribute="leading" secondItem="bfz-S0-abp" secondAttribute="trailing" constant="6.3333333333333357" id="vpG-Kh-GLw"/>
+                    <constraint firstItem="rYG-RD-oJe" firstAttribute="leading" secondItem="bfz-S0-abp" secondAttribute="trailing" constant="8" id="vpG-Kh-GLw"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

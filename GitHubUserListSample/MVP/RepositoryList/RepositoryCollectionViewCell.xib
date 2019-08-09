@@ -35,7 +35,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="kSj-eg-rd1"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -57,7 +57,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <accessibility key="accessibilityConfiguration" identifier="Root View"/>
                     <constraints>
                         <constraint firstItem="hvN-O6-RIX" firstAttribute="trailing" secondItem="rwd-TR-IbR" secondAttribute="leading" constant="-8" id="CF8-Yq-ndp"/>
@@ -75,7 +74,7 @@
                     <viewLayoutGuide key="safeArea" id="CpU-mm-sd1"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Lpa-ta-sd8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="0eE-ug-J9O"/>
                 <constraint firstItem="Lpa-ta-sd8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="fM1-yR-E0H"/>

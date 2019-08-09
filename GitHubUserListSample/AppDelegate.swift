@@ -14,11 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let vc: UserListViewController = .init(with: .init())
-        let nvc = UINavigationController(rootViewController: vc)
+        let viewController: UserListViewController = .init(with: .init())
+        let navigation: UINavigationController = .init(rootViewController: viewController)
 
         self.window = .init()
-        self.window?.rootViewController = nvc
+        self.window?.rootViewController = navigation
         self.window?.makeKeyAndVisible()
 
         return true
@@ -45,7 +45,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

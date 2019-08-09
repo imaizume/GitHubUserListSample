@@ -26,7 +26,7 @@ class RepositoryCollectionViewCell: UICollectionViewCell {
 
     static let identifier: String = .init(describing: RepositoryCollectionViewCell.self)
 
-    var repo: GitHubRepogitory? {
+    var repo: GitHubRepo? {
         didSet {
             self.nameLabel.text = self.repo?.name
             if let language: String = self.repo?.language {
@@ -42,7 +42,7 @@ class RepositoryCollectionViewCell: UICollectionViewCell {
 
 extension RepositoryCollectionViewCell: NibInstantiatable {
     struct Dependency {
-        let repo: GitHubRepogitory
+        let repo: GitHubRepo
     }
 
     func inject(_ dependency: RepositoryCollectionViewCell.Dependency) {

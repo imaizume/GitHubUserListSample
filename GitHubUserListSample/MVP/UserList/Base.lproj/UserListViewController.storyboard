@@ -22,17 +22,27 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="Activity Indicator View" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4mg-5J-PtJ" userLabel="Activity Indicator View">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="TDP-Nj-KS3"/>
+                                    <constraint firstAttribute="height" constant="20" id="vYJ-hG-IZv"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Slb-0G-w5W" secondAttribute="bottom" id="6WH-bU-PRQ"/>
+                            <constraint firstItem="4mg-5J-PtJ" firstAttribute="centerY" secondItem="0uN-zB-t2N" secondAttribute="centerY" id="XON-Ym-UqK"/>
                             <constraint firstItem="Slb-0G-w5W" firstAttribute="top" secondItem="0uN-zB-t2N" secondAttribute="top" id="gYp-re-hhm"/>
+                            <constraint firstItem="4mg-5J-PtJ" firstAttribute="centerX" secondItem="0uN-zB-t2N" secondAttribute="centerX" id="hpC-yk-rle"/>
                             <constraint firstItem="0uN-zB-t2N" firstAttribute="trailing" secondItem="Slb-0G-w5W" secondAttribute="trailing" id="ksb-X1-tGN"/>
                             <constraint firstItem="Slb-0G-w5W" firstAttribute="leading" secondItem="0uN-zB-t2N" secondAttribute="leading" id="y7Q-Sh-wsj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0uN-zB-t2N"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="4mg-5J-PtJ" id="eh0-ZS-ke6"/>
                         <outlet property="usersTableView" destination="Slb-0G-w5W" id="dYI-1B-W1p"/>
                     </connections>
                 </viewController>

@@ -10,11 +10,26 @@ import Instantiate
 import InstantiateStandard
 import UIKit
 
+/**
+ GitHubのユーザー一覧
+ */
 class UserListViewController: UIViewController {
 
-    @IBOutlet weak var usersTableView: UITableView!
+    // MARK: - Properties
 
-    private lazy var presenter: UserListPresenterInput = UserListPresenter(self, UserListModel())
+    // MARK: IBOutlet
+
+    @IBOutlet private weak var usersTableView: UITableView!
+
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+
+    // MARK: private
+
+    private var presenter: UserListPresenter!
+
+    // MARK: - Methods
+
+    // MARK: lifecycle
 
     override func loadView() {
         super.loadView()
@@ -23,6 +38,7 @@ class UserListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter = .init(self)
         self.presenter.fetchUsers()
     }
 }
@@ -36,10 +52,8 @@ extension UserListViewController: StoryboardInstantiatable {
 }
 
 extension UserListViewController: UserListPresenterOutput {
-    func open(byId id: Int, andLogin login: String) {
-        let model: RepositoryListModel = .init()
-        let presenter: RepositoryListPresenter = .init(model, userInfo: (id: id, login: login))
-        let vc: RepositoryListViewController = .init(with: .init(input: presenter))
+    func didSelectItem(ofUserId id: Int, withLogin login: String) {
+        let vc: RepositoryListViewController = .init(with: .init(userInfo: (id: id, login: login)))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -47,4 +61,3 @@ extension UserListViewController: UserListPresenterOutput {
         return self.usersTableView
     }
 }
-
