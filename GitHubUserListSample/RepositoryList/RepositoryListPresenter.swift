@@ -116,7 +116,7 @@ extension RepositoryListPresenter: UICollectionViewDelegateFlowLayout {
 
 extension RepositoryListPresenter: DZNEmptyDataSetSource {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return Asset.user.image
+        return Asset.empty.image
     }
 }
 
